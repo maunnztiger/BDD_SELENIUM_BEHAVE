@@ -2,18 +2,32 @@ Feature: testing the content of a table
 
 Scenario Outline: write a simple test for the table-content of Homeoffice General Statistic
     GIVEN the title of the browser-tab is "Homeoffice 2024" 
-    WHEN the user clicks the button in the left corner
+    WHEN the user clicks the menu-button in the left corner
     THEN there occurs a blue menu
     WHEN the user clicks on the menupoint "General Homeoffice Statistic"
     THEN a page opens with the headline "Homeoffice General Statistic"
     AND the page contains a table with 13 entries
     AND the table has three columns
-    AND the first column is "Id"
-    AND the second column is "Von den Befragten, die Homeoffice machen"
-    AND the third column is "Wert in Prozent"
-    AND the first cloumn in the first row has the text-entry "0"
-    AND the second column in the first row has the text-entry "Angestellte in Deutschland, die 2020 die Chance auf Homeoffice hatten"
-    AND the third column in the first row has the text-entry "36,0%"
-    AND the first cloumn in the last row has the text-entry "12"
-    AND the second column in the last row has the text-entry "Tatsächlich könnte ich meinen Job komplett aus dem Homeoffice machen"
-    AND the third column in the last row has the text-entry "55,0%"
+    AND the first column has the headline "Id"
+    AND the second column has the headline "Aspekt"
+    AND the third column has the headline "Value"
+    AND the first cloumn in the row has the text-entry "<Id>"
+    AND the second cloumn in the row has the text-entry "<Aspekt>"
+    AND the third cloumn in the row has the text-entry "<Value>"
+    
+    Examples:
+
+        | Id    | Aspekt                                                                        | Value           |
+        | 0     | Angestellte in Deutschland, die 2020 die Chance auf Homeoffice hatten         | 36,0%           |
+        | 1     | Männer arbeiten öfter an einem nicht festgelegeten Arbeitsplatz als Frauen    | 11,5%           |
+        | 2     | Angestellte im Homeoffice, die einen Büro-Vollzeit-Job haben                  | 70,0%           |
+        | 3	    | Europaweiter Vergleich der Homeoffice-Möglichkeit in Deutschland              | 5,0%   	      |
+        | 4	    | Luxemburg: Anteil der Angestellten mit Remote-Arbeit	                        | 53,4%  	      |
+        | 5 	| Wegfall des Arbeitswegs als größter Vorteil                                   | 76,0%		      |
+        | 6	    | Vereinbarkeit von Beruf und Familie als Vorteil	                            | 73,0%	          |
+        | 7	    | Nachteilig der fehlende Kontakt zu Kollegen	                                | 74,0%		      |
+        | 8	    | Nachteilig die unklare Trennung von Beruf und Privatleben                     | 45,0%		      |
+        | 9	    | Wollen auch nach Corona eine Möglichkeit auf Homeoffice	                    | 48,0%		      |
+        | 10	| Befürworten ein gesetzliches Recht auf Homeoffice                             | 73,0%		      |
+        | 11    | Von allen Berufstätigen während Corona im Homeoffice                          | 45,0%		      |
+        | 12    | Tatsächlich könnte ich meinen Job komplett aus dem Homeoffice machen          | 55,0%           |
