@@ -4,6 +4,7 @@ import time
 from selenium import webdriver
 from Pages.basePage import BasePage
 from Pages.tutorialPage import TutorialPage
+from Pages.table_contentPage import TableContentPage
 
 
 data = json.load(open("Ressources/config.json"))
@@ -15,6 +16,7 @@ def before_scenario(context, scenario):
     time.sleep(5)
     basepage = BasePage(context.driver)
     context.tutorialPage = TutorialPage(basepage)
+    context.table_content = TableContentPage(basepage)
     context.driver.get(data["DEXTERSLAB_URL"])
     context.driver.maximize_window()
     context.driver.implicitly_wait(3)
