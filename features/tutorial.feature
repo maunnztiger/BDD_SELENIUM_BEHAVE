@@ -7,7 +7,7 @@ Scenario: run a simple test
    AND the first menu-point is: "Homeoffice General Statistic"
    AND the second menu-point is: "Men in Homeoffice Statistic"
    AND the third menu-point is: "Homeoffice Special Statistic"
-   AND the fourth menu-point is: "Adavantages of Homeoffice"
+   AND the fourth menu-point is: "Advantages of Homeoffice"
    AND the fifth menu-point is: "Disadvantages of Homeoffice"
    AND the sixth menu-point is: "Homeoffice compared with Europe"
    WHEN the user clicks the button in the left corner
