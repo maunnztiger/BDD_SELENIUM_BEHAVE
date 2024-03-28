@@ -1,6 +1,7 @@
 import json
 import time
-
+from allure_commons._allure import attach
+from allure_commons.types import AttachmentType
 from selenium import webdriver
 from Pages.basePage import BasePage
 from Pages.tutorialPage import TutorialPage
@@ -17,9 +18,15 @@ def before_scenario(context, scenario):
     basepage = BasePage(context.driver)
     context.tutorialPage = TutorialPage(basepage)
     context.table_content = TableContentPage(basepage)
+    context.stepid = 1
     context.driver.get(data["DEXTERSLAB_URL"])
     context.driver.maximize_window()
     context.driver.implicitly_wait(3)
+    
+
+def after_step(context, step):
+        attach(context.driver.get_screenshot_as_png(), name=context.stepid, attachment_type=AttachmentType.PNG)
+        context.stepid = context.stepid + 1
     
 def after_scenario(context, scenario):
     context.driver.quit()    
