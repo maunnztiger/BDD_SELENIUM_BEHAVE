@@ -61,14 +61,14 @@ def step_impl(context, third_column_title):
 def step_impl(context):
     context.table_content.validate_edit_and_delete_button()        
 
-@step('the first row has text-entries: "{text_entries}"')
+@step('the first row has text-entry: "{text_entries}"')
 def step_impl(context, text_entries):
     context.table_content.verify_first_row_text_entry(text_entries)      
 
-@step('the sixth row has text-entries: "{text_entries}"')
+@step('the seventh row has text-entry: "{text_entries}"')
 def step_impl(context, text_entries):
-    context.table_content.verify_sixth_row_text_entries(text_entries)    
+    context.table_content.verify_seventh_row_text_entry(text_entries)    
     
-@step('the last row has text-entries: "{text_entries}"')
+@step('the last row has text-entry: "{text_entries}"')
 def step_impl(context, text_entries):
-    context.table_content.verify_last_rows_text_entries(text_entries)    
+    context.table_content.verify_last_rows_text_entry(text_entries)    

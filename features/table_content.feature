@@ -16,6 +16,6 @@ Scenario: write a simple test for the table-content of Homeoffice General Statis
     AND the second column has the title "Aspekt"
     AND the third column has the title "Value"
     AND the fourth column contains an edit button and a delete-button
-    AND the first row has text-entries: "Angestellte in Deutschland, die 2020 die Chance auf Homeoffice hatten"
-    AND the sixth row has text-entries: "Vereinbarkeit von Beruf und Familie als Vorteil" 
-    AND the last row has text-entries: "Tatsächlich könnte ich meinen Job komplett aus dem Homeoffice machen"
+    AND the first row has text-entry: "Angestellte in Deutschland, die 2020 die Chance auf Homeoffice hatten"
+    AND the seventh row has text-entry: "Vereinbarkeit von Beruf und Familie als Vorteil" 
+    AND the last row has text-entry: "Tatsächlich könnte ich meinen Job komplett aus dem Homeoffice machen"
