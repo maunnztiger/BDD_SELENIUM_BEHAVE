@@ -24,10 +24,7 @@ def before_scenario(context, scenario):
     context.driver.implicitly_wait(3)
     
 
-def after_step(context, step):
-        attach(context.driver.get_screenshot_as_png(), name=context.stepid, attachment_type=AttachmentType.PNG)
-        context.stepid = context.stepid + 1
-    
+  
 def after_scenario(context, scenario):
     context.driver.quit()    
     

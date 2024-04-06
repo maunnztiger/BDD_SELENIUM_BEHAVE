@@ -11,7 +11,7 @@ def step_impl(context):
     
 @then('there occurs a blue menu')
 def step_impl(context):    
-    context.tutorialPage.blue_menu_validation()
+    context.tutorialPage.menu_blue_color_validation()
 
 @step('the first menu-point is: "{menupoint}"')
 def step_impl(context, menupoint): 

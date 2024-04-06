@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 from features.Pages.basePage import BasePage
 
+
 class TableContentPage(BasePage):
     def __init__(self, context):
         BasePage.__init__(self, context.driver)
