@@ -16,5 +16,6 @@ def step_impl(context, menu_point):
 def step_impl(context, headline_text):
     context.buttons.validate_headline_text(headline_text)
     
-    
-    
+@step('the title of the tab is "{tab_title}"')
+def step_impl(context, tab_title):
+    context.buttons.validate_tab_title(tab_title)        
