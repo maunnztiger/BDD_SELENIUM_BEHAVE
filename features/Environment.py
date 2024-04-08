@@ -1,11 +1,11 @@
 import json
 import time
-from allure_commons._allure import attach
-from allure_commons.types import AttachmentType
 from selenium import webdriver
-from Pages.basePage import BasePage
-from Pages.tutorialPage import TutorialPage
-from Pages.table_contentPage import TableContentPage
+from features.Pages.base_page import BasePage
+from features.Pages.tutorial_page import TutorialPage
+from features.Pages.table_content_page import TableContentPage
+from features.Pages.button_page import Buttons
+
 
 
 data = json.load(open("Ressources/config.json"))
@@ -18,6 +18,7 @@ def before_scenario(context, scenario):
     basepage = BasePage(context.driver)
     context.tutorialPage = TutorialPage(basepage)
     context.table_content = TableContentPage(basepage)
+    context.buttons = Buttons(basepage)
     context.stepid = 1
     context.driver.get(data["DEXTERSLAB_URL"])
     context.driver.maximize_window()

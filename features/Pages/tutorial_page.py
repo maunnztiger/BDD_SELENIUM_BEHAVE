@@ -1,7 +1,7 @@
 
 from time import sleep
-from features.Pages.basePage import BasePage
-from features.Pages.library import Library
+from features.Pages.base_page import BasePage
+from features.Pages.library_page import Library
 
 
 # The page contains all the locators and the actions to perform on that web element.

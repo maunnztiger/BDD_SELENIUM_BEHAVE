@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from time import sleep
-from features.Pages.basePage import BasePage
-from features.Pages.library import Library
+from features.Pages.base_page import BasePage
+from features.Pages.library_page import Library
 
 
 class TableContentPage(BasePage):
@@ -10,7 +10,7 @@ class TableContentPage(BasePage):
         self.context = context
         self.libs = Library()
         self.menu_button_element_id = "menuButton"
-        self.menu_point_link_text = "Homeoffice General Statistic"
+        self.menu_point_link_text = "Men in Homeoffice Statistic"
         self.headline_id = "headline"
         self.dropdown_selection_xpath = "/html/body/div[4]/div[1]/label/select/option[3]"
         self.searchbar_label_xpath ="/html/body/div[4]/div[2]/label"
@@ -24,8 +24,9 @@ class TableContentPage(BasePage):
         self.second_column_xpath = "/html/body/div[4]/table/thead/tr/th[2]"
         self.third_column_xpath = "/html/body/div[4]/table/thead/tr/th[3]"
         self.first_row_second_column_xpath = "/html/body/div[4]/table/tbody/tr[1]/td[2]"
-        self.seventh_row__second_column_xpath = "/html/body/div[4]/table/tbody/tr[7]/td[2]"
-        self.last_row_second_column_xpath = "/html/body/div[4]/table/tbody/tr[13]/td[2]"
+        self.second_row_second_column_xpath = "/html/body/div[4]/table/tbody/tr[2]/td[2]"
+        self.third_row_second_column_xpath = "/html/body/div[4]/table/tbody/tr[3]/td[2]"
+        self.last_row_second_column_xpath = "/html/body/div[4]/table/tbody/tr[4]/td[2]"
         self.pencil_button_xpath = "/html/body/div[4]/table/tbody/tr[1]/td[4]/i"
         self.delete_button_xpath = "/html/body/div[4]/table/tbody/tr[1]/td[5]/button/i"
         
@@ -105,12 +106,18 @@ class TableContentPage(BasePage):
         assert row_text == text_entry     
         sleep(1)
 
-    def verify_seventh_row_text_entry(self, text_entry):
-        element = self.libs.get_element_by_xpath(self.driver, self.seventh_row__second_column_xpath)
+    def verify_second_row_text_entry(self, text_entry):
+        element = self.libs.get_element_by_xpath(self.driver, self.second_row_second_column_xpath)
         row_text = element.text        
         assert row_text == text_entry
         sleep(1)
 
+    def verify_third_row_text_entry(self, text_entry):
+        element = self.libs.get_element_by_xpath(self.driver, self.third_row_second_column_xpath)
+        row_text = element.text
+        assert row_text == text_entry
+        sleep(1)
+        
     def verify_last_rows_text_entry(self, text_entry):
         element = self.libs.get_element_by_xpath(self.driver, self.last_row_second_column_xpath)
         row_text = element.text        
