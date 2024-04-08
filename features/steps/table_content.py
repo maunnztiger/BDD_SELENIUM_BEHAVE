@@ -11,7 +11,7 @@ def step_impl(context):
     
 @then('there occurs a blue colored menu')
 def step_impl(context):    
-    context.tutorialPage.blue_menu_validation()
+    context.tutorialPage.menu_blue_color_validation()
     
 @when('the user clicks on the menupoint "Homeoffice General Statistic"') 
 def step_impl(context):
