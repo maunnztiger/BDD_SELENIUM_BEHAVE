@@ -20,18 +20,14 @@ def step_impl(context, headline_text):
 def step_impl(context, tab_title):
     context.buttons.validate_tab_title(tab_title)        
     
-@when('the user clicks on the dark blue Button "{button_1_name}"')
-def step_impl(context, button_1_name):
-    context.button.click_button(button_1_name)
-    
-@then ('the front page appears again')
+@when('the user clicks on the dark blue Button "Go Back"')
 def step_impl(context):
-    context.button.validate_front_page()
-
-@step('the front page has the headline "{headline_text}"')
-def step_impl(context, headline_text):
-    context.buttons.validate_headline_text(headline_text)
+    context.buttons.return_button_click()
     
-@step('the title of the tab is again "{tab_title}" ')    
+@then ('the front page with the headline "{headline_text}" appears again')
+def step_impl(context, headline_text):
+    context.buttons.validate_front_page(headline_text)
+    
+@step('the title of the tab is again "{tab_title}"')    
 def step_impl(context, tab_title):
     context.tutorialPage.tab_validation(tab_title)
