@@ -4,7 +4,7 @@ from selenium import webdriver
 from features.Pages.base_page import BasePage
 from features.Pages.tutorial_page import TutorialPage
 from features.Pages.table_content_page import TableContentPage
-from features.Pages.button_page import Buttons
+from features.Pages.return_button_page import Buttons
 
 
 
