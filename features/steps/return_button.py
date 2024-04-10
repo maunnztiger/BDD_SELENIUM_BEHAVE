@@ -10,23 +10,23 @@ def step_impl(context):
     
 @step('the user clicks on the menupoint "{menu_point}"') 
 def step_impl(context, menu_point):
-    context.buttons.click_on_menupoint(menu_point)
+    context.return_button.click_on_menupoint(menu_point)
     
 @then('the page "{headline_text}" opens up')
 def step_impl(context, headline_text):
-    context.buttons.validate_headline_text(headline_text)
+    context.return_button.validate_headline_text(headline_text)
     
 @step('the title of the tab is "{tab_title}"')
 def step_impl(context, tab_title):
-    context.buttons.validate_tab_title(tab_title)        
+    context.return_button.validate_tab_title(tab_title)        
     
 @when('the user clicks on the dark blue Button "Go Back"')
 def step_impl(context):
-    context.buttons.return_button_click()
+    context.return_button.return_button_click()
     
 @then ('the front page with the headline "{headline_text}" appears again')
 def step_impl(context, headline_text):
-    context.buttons.validate_front_page(headline_text)
+    context.return_button.validate_front_page(headline_text)
     
 @step('the title of the tab is again "{tab_title}"')    
 def step_impl(context, tab_title):
