@@ -82,4 +82,16 @@ def step_impl(context, aspekt_text_entry):
 
 @step('the last row "Value"-column has now the text-entry: "{value_text_entry}"')
 def step_impl(context, value_text_entry):
-    context.create_button.validate_last_row_value_column_text_entry(value_text_entry)     
+    context.create_button.validate_last_row_value_column_text_entry(value_text_entry)  
+    
+@when('the user clicks on the trash-button on the right of the entry-row')
+def step_impl(context):
+    context.create_button.click_on_trash_button()
+
+@step('the user accepts the alert that is poping up')
+def step_impl(context):
+    context.create_button.accept_alert_box()
+
+@then('the according entry will be deleted from the table')       
+def step_impl(context):
+    context.create_button.validate_deleted_rows_disapears() 
