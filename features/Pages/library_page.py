@@ -32,3 +32,17 @@ class Library:
         color_string = Color.from_string(value)
         return color_string
         
+    def get_table_data(self, driver, rows_xpath):
+        rows = driver.find_elements(by=By.XPATH, value=rows_xpath)
+        table_data = []
+        for row in rows:
+            cells = row.find_elements(by=By.XPATH, value=".//td")
+            row_data = {
+            "Id": cells[0].text,
+            "Aspekt": cells[1].text,
+            "Value": cells[2].text
+            }
+            table_data.append(row_data)
+        return table_data
+    
+        

@@ -1,3 +1,4 @@
+import json
 from selenium.webdriver.common.by import By
 from time import sleep
 from features.Pages.base_page import BasePage
@@ -9,6 +10,7 @@ class TableContentPage(BasePage):
         BasePage.__init__(self, context.driver)
         self.context = context
         self.libs = Library()
+        self.rows_xpath = "//tbody/tr"
         self.menu_button_element_id = "menuButton"
         self.menu_point_link_text = "Men in Homeoffice Statistic"
         self.headline_id = "headline"
@@ -100,25 +102,15 @@ class TableContentPage(BasePage):
         self.libs.get_element_by_xpath(self.driver, self.delete_button_xpath)        
         sleep(1)
 
-    def verify_first_row_text_entry(self, text_entry):
-        element = self.libs.get_element_by_xpath(self.driver, self.first_row_second_column_xpath)
-        row_text = element.text       
-        assert row_text == text_entry     
-        sleep(1)
-
-    def verify_second_row_text_entry(self, text_entry):
-        element = self.libs.get_element_by_xpath(self.driver, self.second_row_second_column_xpath)
-        row_text = element.text        
-        assert row_text == text_entry
-        sleep(1)
-
-    def verify_third_row_text_entry(self, text_entry):
-        element = self.libs.get_element_by_xpath(self.driver, self.third_row_second_column_xpath)
-        row_text = element.text
-        assert row_text == text_entry
-        sleep(1)
+    def verify_rows_text_entries(self):
+        with open("Ressources/men_in_homeoffice.json", encoding='utf-8') as fh:
+            data = json.load(fh)
         
-    def verify_last_rows_text_entry(self, text_entry):
-        element = self.libs.get_element_by_xpath(self.driver, self.last_row_second_column_xpath)
-        row_text = element.text        
-        assert row_text == text_entry       
+        table_data = self.libs.get_table_data(self.driver, self.rows_xpath)
+        table_data_json = json.dumps(table_data, ensure_ascii=False).encode('unicode-escape').decode('utf-8')
+        table_data_unicode = table_data_json.encode('utf-8').decode('unicode_escape')
+        expected_data_json = json.dumps(data, ensure_ascii=False)
+        for i, row_data in enumerate(table_data_unicode):
+            assert row_data == expected_data_json[i], f"Die {i}-te Reihe stimmt nicht mit dem erwarteten Datensatz überein."
+        
+   
