@@ -6,6 +6,7 @@ from features.Pages.tutorial_page import TutorialPage
 from features.Pages.table_content_page import TableContentPage
 from features.Pages.return_button_page import ReturnButton
 from features.Pages.create_button_page import CreateButton
+from features.Pages.edit_button_page import EditButton
 
 
 
@@ -21,6 +22,7 @@ def before_scenario(context, scenario):
     context.table_content = TableContentPage(basepage)
     context.return_button = ReturnButton(basepage)
     context.create_button = CreateButton(basepage)
+    context.edit_button = EditButton(basepage)
     context.stepid = 1
     context.driver.get(data["DEXTERSLAB_URL"])
     context.driver.maximize_window()
