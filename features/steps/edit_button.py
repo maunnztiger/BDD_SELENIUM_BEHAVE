@@ -6,7 +6,7 @@ def step_impl(context, headline_text):
     context.table_content.click_on_menupoint()
     context.table_content.verify_headline(headline_text)
 
-@when('the user clicks on the edit-button at the right end a row of the table')
+@when('the user clicks on the edit-button at the right end of a row of the table')
 def step_impl(context):
     context.edit_button.click_on_edit_button()
     
@@ -42,10 +42,6 @@ def step_impl(context):
 def step_impl(context, button_name):
     context.edit_button.save_changes(button_name)
     
-@then('the according row has new textentries in the column "Aspekt"')
+@then('the according row has new textentries in the according columns')
 def step_impl(context):
-    context.edit_button.verify_aspekt_column_new_textentry()  
-    
-@step('the according row has a new textcontent in the column "Value"')
-def step_impl(context):
-    context.edit_button.verify_value_column_new_textentry()  
+    context.edit_button.verify_columns_new_textentries()  

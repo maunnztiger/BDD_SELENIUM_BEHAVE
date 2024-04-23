@@ -27,8 +27,8 @@ class EditButton(BasePage):
         self.aspekt_column_textentry = element_1.text
         self.value_column_textentry = element_2.text
         sleep(1)
-        edit_button = self.libs.get_element_by_xpath(self.driver, self.edit_button_xpath)
-        edit_button.click()
+        self.edit_button = self.libs.get_element_by_xpath(self.driver, self.edit_button_xpath)
+        self.edit_button.click()
         sleep(1)
         
     def validate_popup_headline(self, popup_headline):
@@ -62,10 +62,10 @@ class EditButton(BasePage):
         sleep(1)
         
     def verify_popup_textfields_textentries(self):
-        element_1 = self.libs.get_element_by_xpath(self.driver, self.popup_aspekt_textfield_xpath)
-        element_2 = self.libs.get_element_by_xpath(self.driver, self.popup_value_textfield_xpath)
-        aspekt_textfield_text = element_1.text
-        value_textfield_text = element_2.text
+        self.aspekt_textfield = self.libs.get_element_by_xpath(self.driver, self.popup_aspekt_textfield_xpath)
+        self.value_textfield = self.libs.get_element_by_xpath(self.driver, self.popup_value_textfield_xpath)
+        aspekt_textfield_text = self.aspekt_textfield.text
+        value_textfield_text = self.value_textfield.text
         try:
             assert aspekt_textfield_text ==  self.aspekt_column_textentry
             assert value_textfield_text  == self.value_column_textentry
@@ -73,6 +73,34 @@ class EditButton(BasePage):
         except: AssertionError , "textfields do not match"
         sleep(1)
         
+    def change_textfield_entries(self):
+        self.driver.execute_script("arguments[0].value=''", self.aspekt_textfield)
+        self.driver.execute_script("arguments[0].value=''", self.value_textfield)
+        self.aspekt_textfield.send_keys(self.apsekt_textfield_new_text)
+        self.value_textfield.send_keys(self.value_textfield_new_text)    
+        sleep(1)
+        
+    def save_changes(self, button_name):
+        save_button = self.libs.get_element_by_xpath(self.driver, self.popup_save_button_xpath)
+        save_button_text = save_button.text    
+        try:
+            assert save_button_text == button_name
+            save_button.click()
+            sleep(1)
+        except: Exception   
+    
+    def verify_columns_new_textentries(self):
+        aspekt_column = self.libs.get_element_by_xpath(self.driver, self.aspekt_column_xpath)
+        value_column = self.libs.get_element_by_xpath(self.driver, self.value_column_xpath)
+        aspekt_column_text = aspekt_column.text
+        value_column_text = value_column.text
+        try:
+            assert value_column_text == self.value_textfield_new_text
+            assert aspekt_column_text == self.apsekt_textfield_new_text
+            sleep(1)
+        except: AssertionError, "Textentries do not match"   
+
+
     
         
         
