@@ -8,8 +8,7 @@ Scenario: write a little test for the edit button
     AND the popup has a second label "Value"
     AND there is a "Save Changes"-Button below the editor-textfields
     AND there is a "Cancel"-Button below the the textfields
-    AND the textcontent of the "Aspekt"-column is given in the "Aspekt"-textfield
-    AND the textcontent of the "Value"-column is given in the "Vspekt"-textfield
+    AND the textcontent of the columns are given in the Popup-textfields
     WHEN the user changes the textcontent of the textfields
     AND clicks on the button "Save Changes"
     THEN the according row has new textentries in the column "Aspekt" 

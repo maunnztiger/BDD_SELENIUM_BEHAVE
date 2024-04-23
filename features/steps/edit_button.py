@@ -16,11 +16,11 @@ def step_impl(context, popup_headline):
     
 @step('the popup has a first label "{label_name}"')
 def step_impl(context, label_name):
-    context.edit_button.verify_first_label_name(label_name)
+    context.edit_button.verify_aspekt_label_name(label_name)
 
 @step('the popup has a second label "{label_name}"')
 def step_impl(context, label_name):
-    context.edit_button.verify_second_label_name(label_name)    
+    context.edit_button.verify_value_label_name(label_name)    
     
 @step('there is a "{first_button_name}"-Button below the editor-textfields')     
 def step_impl(context, first_button_name):
@@ -30,14 +30,10 @@ def step_impl(context, first_button_name):
 def step_impl(context, second_button_name):
     context.edit_button.validate_second_button(second_button_name)
     
-@step('the textcontent of the "Aspekt"-column is given in the "Aspekt"-textfield')
+@step('the textcontent of the columns are given in the Popup-textfields')
 def step_impl(context):
-    context.edit_button.verify_aspekt_textfield_entry()
-
-@step('the textcontent of the "Value"-column is given in the "Vspekt"-textfield')
-def step_impl(context):
-    context.edit_button.verify_value_textfield_entry()    
-
+    context.edit_button.verify_popup_textfields_textentries()
+  
 @when('the user changes the textcontent of the textfields')
 def step_impl(context):
     context.edit_button.change_textfield_entries()
