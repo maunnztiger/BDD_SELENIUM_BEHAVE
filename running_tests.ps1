@@ -1,5 +1,3 @@
-behave .\features\create_button.feature
-behave .\features\edit_button.feature
-behave .\features\return_button.feature
-behave .\features\table_content.feature
-behave .\features\tutorial.feature
+python3.11 -m behave .\features\create_button.feature .\features\edit_button.feature .\features\return_button.feature .\features\table_content.feature .\features\tutorial.feature --capture -f allure_behave.formatter:AllureFormatter -o Report_Json
+allure generate .\Report_Json\ -o .\Report_Html\ --clean
+Start-Process "C:\Program Files\Mozilla Firefox\firefox.exe" "C:\Users\nn\BDD_SELENIUM_BEHAVE\Report_Html\index.html"

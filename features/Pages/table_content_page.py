@@ -1,5 +1,4 @@
 import json
-from selenium.webdriver.common.by import By
 from time import sleep
 from features.Pages.base_page import BasePage
 from features.Pages.library_page import Library
