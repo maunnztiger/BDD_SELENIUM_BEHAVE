@@ -3,9 +3,9 @@ Feature: Testing the create Button
 Scenario: write a little test for the create-button functionality 
     GIVEN the title of the tab will still be "Homeoffice 2024" 
     WHEN the user clicks on the menu on the front page
-    AND the user clicks on the menu-link "Men in Homeoffice Statistic"
+    AND the user clicks on the menu-link "Men in Homeoffice Data"
     THEN the page "Men in Homeoffice Statistic" opens up again
-    AND the title of the tab is again "Men in Homeoffice Statistic"
+    AND the title of the tab is again "Men in Homeoffice Data"
     WHEN the user clicks on the button "Create Record"
     THEN a Popup Window is openning up with the headline "Edit Row"
     AND there is a textfield with the label "Id:"

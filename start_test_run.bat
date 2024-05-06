@@ -1,0 +1,1 @@
+call Powershell.exe -executionpolicy remotesigned -File  C:\Users\nn\BDD_SELENIUM_BEHAVE\\running_tests.ps1

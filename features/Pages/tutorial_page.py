@@ -23,6 +23,7 @@ class TutorialPage(BasePage):
         self.fourth_menupoint_element_id = "data_advantages"
         self.fifth_menupoint_element_id = "data_disadvantages"
         self.sixth_menupoint_element_id = "data_european_comparation"
+        self.seventh_menupoint_element_id = "video_list"
       
        
     def tab_validation(self, tab_title):
@@ -81,6 +82,12 @@ class TutorialPage(BasePage):
         assert menu_button_text == menupoint
         sleep(1)
     
+    def seventh_menupoint_validation(self, menupoint):
+        element = self.libs.get_element_by_id(self.driver, self.seventh_menupoint_element_id)
+        menu_button_text = element.text
+        assert menu_button_text == menupoint
+        sleep(1)
+        
     def menu_disappears_validation(self):
         try:
             menu = self.libs.get_elements_by_id(self.driver, self.menu_element_id)

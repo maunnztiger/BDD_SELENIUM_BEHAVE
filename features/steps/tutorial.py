@@ -36,6 +36,10 @@ def step_impl(context, menupoint):
 @step('the sixth menu-point is: "{menupoint}"')
 def step_impl(context, menupoint): 
     context.tutorialPage.sixth_menupoint_validation(menupoint)
+    
+@step('the seventh menu-point is: "{menupoint}"')
+def step_impl(context, menupoint): 
+    context.tutorialPage.seventh_menupoint_validation(menupoint)    
         
 @when('the user clicks on the menu button again')
 def step_impl(context):

@@ -20,7 +20,7 @@ def step_impl(context, headline_text):
 def step_impl(context, tab_title):
     context.return_button.validate_tab_title(tab_title)        
     
-@when('the user clicks on the dark blue Button "Go Back"')
+@when('the user clicks on the dark blue Button "Main Menu ☰"')
 def step_impl(context):
     context.return_button.return_button_click()
     

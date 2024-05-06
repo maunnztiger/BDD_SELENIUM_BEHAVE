@@ -11,7 +11,7 @@ class TableContentPage(BasePage):
         self.libs = Library()
         self.rows_xpath = "//tbody/tr"
         self.menu_button_element_id = "menuButton"
-        self.menu_point_link_text = "Men in Homeoffice Statistic"
+        self.menu_point_link_text = "Men in Homeoffice Data"
         self.headline_id = "headline"
         self.dropdown_selection_xpath = "/html/body/div[4]/div[1]/label/select/option[3]"
         self.searchbar_label_xpath ="/html/body/div[4]/div[2]/label"
