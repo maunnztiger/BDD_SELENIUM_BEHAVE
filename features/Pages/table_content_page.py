@@ -18,7 +18,7 @@ class TableContentPage(BasePage):
         self.label_text = "Search:"
         self.return_button_xpath = "//*[@id='returnButton']"
         self.create_button_xpath = "/html/body/div[3]/p/button"
-        self.table_id_xpath = "//table[@id='data_general']"
+        self.table_id_xpath = "//table[@id='data_men']"
         self.table_row_xpath = "/html/body/div[4]/table/tbody/tr"
         self.cols_xpath ="/html/body/div[4]/table/thead/tr/th"
         self.first_column_xpath = "/html/body/div[4]/table/thead/tr/th[1]"

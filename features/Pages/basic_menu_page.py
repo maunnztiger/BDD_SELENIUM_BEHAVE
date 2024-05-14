@@ -8,7 +8,7 @@ from features.Pages.library_page import Library
 # In this page file we have declared all the locators at the class level and we are using them in the respective methods.
 
 
-class TutorialPage(BasePage):
+class BasicMenuPage(BasePage):
     def __init__(self, context):
         BasePage.__init__(self, context.driver)
         self.libs = Library()

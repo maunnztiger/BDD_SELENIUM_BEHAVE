@@ -2,11 +2,11 @@ from behave import *
 
 @given('the title of the tab will still be "{tab_title}"')
 def step_impl(context, tab_title):
-    context.tutorialPage.tab_validation(tab_title)
+    context.basic_menu.tab_validation(tab_title)
     
 @when('the user clicks on the menu on the front page')
 def step_impl(context):
-    context.tutorialPage.click_menu_button()
+    context.basic_menu.click_menu_button()
     
 @step('the user clicks on the menu-link "{menu_point}"') 
 def step_impl(context, menu_point):

@@ -3,15 +3,15 @@ from behave import *
 
 @given('the title of the tab is "{tab_title}"')
 def step_impl(context, tab_title):
-    context.tutorialPage.tab_validation(tab_title)
+    context.basic_menu.tab_validation(tab_title)
     
 @when('the user clicks the menu-button in the left corner')
 def step_impl(context):
-    context.tutorialPage.click_menu_button()
+    context.basic_menu.click_menu_button()
     
 @then('there occurs a blue colored menu')
 def step_impl(context):    
-    context.tutorialPage.menu_blue_color_validation()
+    context.basic_menu.menu_blue_color_validation()
     
 @when('the user clicks on the menupoint "Men in Homeoffice Statistic"') 
 def step_impl(context):

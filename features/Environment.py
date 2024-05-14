@@ -2,7 +2,7 @@ import json
 import time
 from selenium import webdriver
 from features.Pages.base_page import BasePage
-from features.Pages.tutorial_page import TutorialPage
+from features.Pages.basic_menu_page import BasicMenuPage
 from features.Pages.table_content_page import TableContentPage
 from features.Pages.return_button_page import ReturnButton
 from features.Pages.create_button_page import CreateButton
@@ -19,7 +19,7 @@ def before_scenario(context, scenario):
     context.driver = webdriver.Firefox()
     time.sleep(5)
     basepage = BasePage(context.driver)
-    context.tutorialPage = TutorialPage(basepage)
+    context.basic_menu = BasicMenuPage(basepage)
     context.table_content = TableContentPage(basepage)
     context.return_button = ReturnButton(basepage)
     context.create_button = CreateButton(basepage)

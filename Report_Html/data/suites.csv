@@ -1,6 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Mon May 06 14:34:44 CEST 2024","Mon May 06 14:35:25 CEST 2024","40877","","","","","","write a simple test for the table-content of Men in Homeoffice-Statistic table",""
-"passed","Mon May 06 14:35:25 CEST 2024","Mon May 06 14:36:01 CEST 2024","36464","","","","","","run a simple test",""
-"passed","Mon May 06 14:33:29 CEST 2024","Mon May 06 14:34:09 CEST 2024","40043","","","","","","write a little test for the edit button",""
-"passed","Mon May 06 14:34:09 CEST 2024","Mon May 06 14:34:44 CEST 2024","35012","","","","","","write a little test for the the return-button functionality",""
-"passed","Mon May 06 14:32:33 CEST 2024","Mon May 06 14:33:29 CEST 2024","55204","","","","","","write a little test for the create-button functionality",""

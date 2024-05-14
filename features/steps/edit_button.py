@@ -2,7 +2,7 @@ from behave import *
 
 @given('the user opens up the page "{headline_text}"')
 def step_impl(context, headline_text):
-    context.tutorialPage.click_menu_button()
+    context.basic_menu.click_menu_button()
     context.table_content.click_on_menupoint()
     context.table_content.verify_headline(headline_text)
 
