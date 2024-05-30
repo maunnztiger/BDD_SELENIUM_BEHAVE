@@ -12,7 +12,7 @@ Scenario:   Testing the video feature
     THEN    the video is played
     WHEN    the user presses "k"-key on the keyboard
     THEN    the video is paused
-    WHEN    the user clicks on the video-menu-button on the left top of the page
+    WHEN    the user clicks on the button "Video Menu ☰" on the left top of the page
     THEN    the page with the headline "Video List" opens up again
-    WHEN    the user activates the main-menu-button on the left top of the page
+    WHEN    the user activates the button "Main Menu ☰" on the left top of the page
     THEN    the frontpage of the app is opened up with the headline "Homeoffice reporting tool"     

@@ -45,17 +45,17 @@ def step_impl(context, keyboard_key):
 def step_impl(context):
     context.video_element.validate_video_is_paused()   
     
-@when('the user clicks on the video-menu-button on the left top of the page')
-def step_impl(context):
-    context.video_element.click_video_list_button()    
+@when('the user clicks on the button "{link_text}" on the left top of the page')
+def step_impl(context, link_text):
+    context.video_element.click_video_list_button(link_text)    
 
 @then('the page with the headline "{video_page_headline}" opens up again')
 def step_impl(context, video_page_headline):
     context.video_element.verify_video_list(video_page_headline)
 
-@when('the user activates the main-menu-button on the left top of the page')
-def step_impl(context):
-    context.video_element.click_return_button()
+@when('the user activates the button "{link_text}" on the left top of the page')
+def step_impl(context, link_text):
+    context.video_element.click_return_button(link_text)
 
 @then('the frontpage of the app is opened up with the headline "{front_page_headline}"')
 def step_impl(context, front_page_headline):

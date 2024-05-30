@@ -92,17 +92,17 @@ class VideoElement(BasePage):
         video_current_time_2 = element.text
         assert video_current_time_1 == video_current_time_2 
     
-    def click_video_list_button(self):
+    def click_video_list_button(self, link_text):
         self.driver.switch_to.default_content()
-        button = self.libs.get_element_by_xpath(self.driver, self.video_list_button_xpath)
-        button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.XPATH, self.video_list_button_xpath)))
+        button = self.libs.get_element_by_linktext(self.driver, link_text)
+        button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.LINK_TEXT, link_text)))
         self.driver.execute_script("arguments[0].click();", button)
         sleep(1)
     
     
-    def click_return_button(self):
-        button = self.libs.get_element_by_xpath(self.driver, self.main_menu_button_xpath)        
-        button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.XPATH, self.main_menu_button_xpath)))
+    def click_return_button(self, link_text):
+        button = self.libs.get_element_by_linktext(self.driver, link_text)        
+        button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.LINK_TEXT, link_text)))
         self.driver.execute_script("arguments[0].click();", button)
         sleep(1)
         
