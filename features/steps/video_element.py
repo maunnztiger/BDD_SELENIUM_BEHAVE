@@ -3,7 +3,6 @@ from behave import *
 @given("the user opens the frontpage's menu")
 def step_impl(context):
     context.video_element.open_user_menu()
-
     
 @when('the user clicks on the button "{menu_link_text}"')
 def step_impl(context, menu_link_text):
@@ -53,10 +52,10 @@ def step_impl(context, link_text):
 def step_impl(context, video_page_headline):
     context.video_element.verify_video_list(video_page_headline)
 
-@when('the user activates the button "{link_text}" on the left top of the page')
-def step_impl(context, link_text):
-    context.video_element.click_return_button(link_text)
+@when('the user activates the button "Main Menu ☰" on the left top of the page')
+def step_impl(context):
+    context.video_element.click_return_button()
 
 @then('the frontpage of the app is opened up with the headline "{front_page_headline}"')
 def step_impl(context, front_page_headline):
-     context.video_element.validate_frontapge_headline(front_page_headline)
+    context.video_element.validate_frontpage_headline(front_page_headline)

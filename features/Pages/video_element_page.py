@@ -18,7 +18,7 @@ class VideoElement(BasePage):
         self.frontpage_headline_xpath = "/html/body/div[2]/h2"
         self.video_list_page_headline_xpath ="/html/body/div[1]/h1"
         self.link_container_video_link_elements_xpath = "/html/body/div[3]/div"
-        self.video_link_xpath ="/html/body/div[3]/div[1]/a"
+        self.video_link_xpath ="//*[@id='0']"
         self.number_of_links = 7
         self.video_source_xpath = "//iframe[@src='https://www.youtube.com/embed/aMxFcrCg4To?si=AlyAcUfmWaw01ltO']"
         self.Yt_button_xpath = "/html/body/div[1]/div/div[4]/button"
@@ -100,13 +100,13 @@ class VideoElement(BasePage):
         sleep(1)
     
     
-    def click_return_button(self, link_text):
-        button = self.libs.get_element_by_linktext(self.driver, link_text)        
-        button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.LINK_TEXT, link_text)))
+    def click_return_button(self):
+        button = self.libs.get_element_by_xpath(self.driver, self.main_menu_button_xpath)        
+        button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.XPATH, self.main_menu_button_xpath)))
         self.driver.execute_script("arguments[0].click();", button)
         sleep(1)
         
-    def validate_frontapge_headline(self, front_page_headline):
+    def validate_frontpage_headline(self, front_page_headline):
         element = self.libs.get_element_by_xpath(self.driver, self.frontpage_headline_xpath)    
         element_text= element.text
         assert element_text == front_page_headline
