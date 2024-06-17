@@ -18,9 +18,7 @@ class SlideShowPage(BasePage):
         self.pages_url = "http://www.dexterslab.com:8080/slide_1.html"
         self.slide_show_document_title_xpath = "/html/head/meta[1]"
         self.imgae_xpath = "/html/body/div[2]/div[2]/div/div/div/div/div[3]/svg/g/g/g/image"
-        self.first_image_aria_label = "My Project-1.png"
-        self.scond_image_aria_label = "My project-2.png"
-        
+           
     def open_frontpage_menu(self):
         element = self.libs.get_element_by_xpath(self.driver, self.menu_button_xpath)
         element.click()
@@ -41,4 +39,9 @@ class SlideShowPage(BasePage):
         url = self.driver.current_url 
         assert url == slide_show_page_url
         
+    def verify_first_aria_label(self, first_aria_label):
+        element = self.libs.get_element_by_xpath(self.driver, self.imgae_xpath)
+        image_label = element.get_attribute('aria-label')
+        assert first_aria_label == image_label
+    
                   

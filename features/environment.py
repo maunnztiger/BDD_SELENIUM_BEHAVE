@@ -1,4 +1,5 @@
 import json
+import os
 from selenium import webdriver
 from selenium.webdriver import FirefoxOptions
 from features.Pages.base_page import BasePage
@@ -17,9 +18,12 @@ data = json.load(open("Ressources/config.json"))
 # This environment page is used as hooks page. Here we can notice that we have used before, after hooks along side with some step hooks.
 
 def before_scenario(context, scenario):
-    opts = FirefoxOptions()
-    opts.add_argument("--headless")
-    context.driver = webdriver.Firefox(options=opts)
+    if os.name == 'nt':
+        context.driver = webdriver.Firefox()
+    else:
+        opts = FirefoxOptions()
+        opts.add_argument("--headless")
+        context.driver = webdriver.Firefox(options=opts)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
     context.basic_menu = BasicMenuPage(basepage)
