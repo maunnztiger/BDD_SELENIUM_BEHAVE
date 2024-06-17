@@ -65,7 +65,7 @@ class VideoElement(BasePage):
         self.driver.switch_to.frame(frame1)
         sleep(2)
         Ytbutton = self.libs.get_element_by_xpath(self.driver, self.Yt_button_xpath)
-        Ytbutton = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.XPATH, self.Yt_button_xpath )))
+        Ytbutton = WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, self.Yt_button_xpath )))
         Ytbutton.click()
         sleep(5)
         
