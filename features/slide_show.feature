@@ -5,7 +5,7 @@ Scenario: Testing the slideshow functionality
     WHEN  the user clicks on the menu-point "Slideshows"
     THEN  another page opens up with the link "Was ist Remote Arbeit?"
     When  the user clicks on the link
-    THEN  a new page opens up having the URL "http://www.dexterslab.com:8080/slide_1.html"  
+    THEN  a new page opens up having the URL "http://192.168.178.53:8080/slide_1.html"  
     AND   there is a slideshow loaded with an image which has the aria-label "My project-1.png"
     AND   the page has the number "1"
     WHEN  the user clicks on the right-arrow on the right of the number 1

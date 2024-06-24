@@ -47,7 +47,6 @@ class SlideShowPage(BasePage):
         sleep(1)
        
     def verify_first_aria_label(self, first_aria_label):
-        # WebDriverWait(self.driver, 5).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "/html/body/div/iframe")))
         frame1 = self.driver.find_element(by=By.XPATH, value='/html/body/div/iframe')
         self.driver.switch_to.frame(frame1)
         sleep(2)
