@@ -57,7 +57,7 @@ class VideoElement(BasePage):
     def validate_video_iframe_open_up(self):
         try:
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, self.video_source_xpath )))
-        except: TimeoutException, 'Element is not loaded after 5 Seconds'      
+        except: TimeoutException, 'Element is not loaded after 5 Seconds'       # type: ignore
     
     
     def click_red_play_button(self):
