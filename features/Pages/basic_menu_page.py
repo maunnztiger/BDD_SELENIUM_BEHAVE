@@ -24,8 +24,7 @@ class BasicMenuPage(BasePage):
         self.fifth_menupoint_element_id = "data_disadvantages"
         self.sixth_menupoint_element_id = "data_european_comparation"
         self.seventh_menupoint_element_id = "video_list"
-      
-       
+        
     def tab_validation(self, tab_title):
         title = self.driver.title
         assert tab_title in title 

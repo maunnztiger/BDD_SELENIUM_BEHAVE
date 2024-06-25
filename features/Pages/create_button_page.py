@@ -97,9 +97,7 @@ class CreateButton(BasePage):
         sleep(1)
 
     def popup_is_not_displayed(self):
-        popup = self.libs.get_element_by_xpath(self.driver, self.popup_overlay_xpath)
-        css_value = self.libs.get_value_of_css_property(popup, self.overlay_css_property)
-        assert css_value == 'none'
+        WebDriverWait(self.driver, 2).until(EC.invisibility_of_element_located((By.XPATH, self.popup_overlay_xpath)))
         sleep(1)
         
     def validate_new_rows_number(self):
