@@ -1,10 +1,6 @@
 from features.Pages.base_page import BasePage
 from features.Pages.library_page import Library
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import ActionChains
-from selenium.common.exceptions import TimeoutException
 from time import sleep
 
 class SlideShowPage(BasePage):
@@ -13,7 +9,10 @@ class SlideShowPage(BasePage):
         self.libs = Library()
         self.driver = context.driver
         self.menu_button_xpath = "//*[@id='menuButton']"
+        self.image_tag_name = "image"
+        self.attribute_name = 'aria-label'
         self.page_link_xpath = "/html/body/div/a"
+        self.iframe_xpath = '/html/body/div/iframe'
         self.slide_show_document_title_xpath = "/html/head/meta[1]"
         self.slide_show_first_image_xpath = "//image[@clip-path='url(#p.1)']"
         self.slide_no_field_xpath = "//*[@id=':l']"
@@ -49,11 +48,11 @@ class SlideShowPage(BasePage):
         sleep(1)
        
     def verify_first_aria_label(self, first_aria_label):
-        frame1 = self.driver.find_element(by=By.XPATH, value='/html/body/div/iframe')
+        frame1 = self.driver.find_element(by=By.XPATH, value=self.iframe_xpath)
         self.driver.switch_to.frame(frame1)
         sleep(2)
-        image =self.driver.find_element(by=By.TAG_NAME, value='image' )
-        image_label = image.get_attribute('aria-label')
+        image =self.driver.find_element(by=By.TAG_NAME, value=self.image_tag_name )
+        image_label = image.get_attribute(self.attribute_name)
         assert first_aria_label == image_label
         sleep(1)
     
@@ -69,8 +68,8 @@ class SlideShowPage(BasePage):
         sleep(1)
     
     def verify_second_aria_label(self, second_aria_label):
-        image = self.driver.find_element(by=By.TAG_NAME, value='image' )
-        image_label = image.get_attribute('aria-label')
+        image = self.driver.find_element(by=By.TAG_NAME, value=self.image_tag_name )
+        image_label = image.get_attribute(self.attribute_name)
         assert image_label == second_aria_label
         sleep(1)
     
@@ -86,8 +85,8 @@ class SlideShowPage(BasePage):
         sleep(1)
     
     def verify_first_slide_page_reload(self, first_aria_label):
-        image = self.driver.find_element(by=By.TAG_NAME, value='image' )
-        image_label = image.get_attribute('aria-label')
+        image = self.driver.find_element(by=By.TAG_NAME, value=self.image_tag_name )
+        image_label = image.get_attribute(self.attribute_name)
         assert image_label == first_aria_label
         sleep(1)        
         
