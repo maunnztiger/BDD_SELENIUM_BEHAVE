@@ -19,6 +19,8 @@ class SlideShowPage(BasePage):
         self.slide_no_field_xpath = "//*[@id=':l']"
         self.progress_slide_up_button_xpath = "/html/body/div[2]/div[1]/div[1]/div[3]"
         self.progress_slide_down_button_xpath = "/html/body/div[2]/div[1]/div[1]/div[1]"
+        self.right_arrow_button_xpath = "//div[@class='punch-viewer-navbar-next goog-inline-block goog-flat-button']"
+        self.left_arrow_button_xpath = "//div[@class='punch-viewer-navbar-prev goog-inline-block goog-flat-button']"
               
     def open_frontpage_menu(self):
         element = self.libs.get_element_by_xpath(self.driver, self.menu_button_xpath)
@@ -62,7 +64,7 @@ class SlideShowPage(BasePage):
         assert slide_no == first_page_number
 
     def click_the_right_arrow(self):
-        element = self.libs.get_element_by_xpath(self.driver, "//div[@class='punch-viewer-navbar-next goog-inline-block goog-flat-button']")
+        element = self.libs.get_element_by_xpath(self.driver, self.right_arrow_button_xpath)
         element.click()
         sleep(1)
     
@@ -79,7 +81,7 @@ class SlideShowPage(BasePage):
         sleep(1)
         
     def click_left_arrow_button(self):
-        button = self.libs.get_element_by_xpath(self.driver, "//div[@class='punch-viewer-navbar-prev goog-inline-block goog-flat-button']")
+        button = self.libs.get_element_by_xpath(self.driver, self.left_arrow_button_xpath)
         button.click()
         sleep(1)
     

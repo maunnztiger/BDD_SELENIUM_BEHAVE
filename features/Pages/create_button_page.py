@@ -30,13 +30,12 @@ class CreateButton(BasePage):
         self.create_button_xpath ="/html/body/div[7]/div[2]/button[1]"
         self.close_editor_button_xpath ="/html/body/div[7]/div[2]/button[2]"
         
-             
     def create_button_click(self):
         button = self.libs.get_element_by_id(self.driver, 'create_button')
         button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.ID, 'create_button' )))
         self.driver.execute_script("arguments[0].click();", button)
         sleep(2)
-          
+
     def verify_headline_text(self, popup_headline):   
         element = self.libs.get_element_by_xpath(self.driver, self.popup_headline_xpath)
         headline_text= element.text 
@@ -81,7 +80,7 @@ class CreateButton(BasePage):
         textfield.send_keys(self.number_of_rows)
         sleep(1)
     
-    def aspext_textfield_input(self, aspekt_input_text):
+    def aspect_textfield_input(self, aspekt_input_text):
         textfield = self.libs.get_element_by_xpath(self.driver, self.aspekt_input_xpath)
         textfield.send_keys(aspekt_input_text)
         sleep(1)

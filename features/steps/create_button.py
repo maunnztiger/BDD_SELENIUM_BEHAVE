@@ -54,7 +54,7 @@ def step_impl(context):
 
 @step('adds the text-value "{aspekt_input_text}" to the Aspekt-textfield')     
 def step_impl(context, aspekt_input_text):
-    context.create_button.aspext_textfield_input(aspekt_input_text)
+    context.create_button.aspect_textfield_input(aspekt_input_text)
  
 @step('adds the percentage "{value_input_text}" to the Value-textfield')
 def step_impl(context, value_input_text):
