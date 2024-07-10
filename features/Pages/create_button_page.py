@@ -100,7 +100,7 @@ class CreateButton(BasePage):
         sleep(1)
         
     def validate_new_rows_number(self):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.table_rows_xpath)))
+        sleep(10)
         rows = self.libs.get_elements_by_xpath(self.driver, self.table_rows_xpath)
         assert len(rows) == (self.number_of_rows+1)
         sleep(1)
