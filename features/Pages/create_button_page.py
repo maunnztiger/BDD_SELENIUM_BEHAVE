@@ -31,6 +31,8 @@ class CreateButton(BasePage):
         self.close_editor_button_xpath ="/html/body/div[7]/div[2]/button[2]"
         
     def create_button_click(self):
+        rows = self.libs.get_elements_by_xpath(self.driver, self.table_rows_xpath)
+        self.number_of_rows = len(rows)
         button = self.libs.get_element_by_id(self.driver, 'create_button')
         button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.ID, 'create_button' )))
         self.driver.execute_script("arguments[0].click();", button)
@@ -40,6 +42,7 @@ class CreateButton(BasePage):
         element = self.libs.get_element_by_xpath(self.driver, self.popup_headline_xpath)
         headline_text= element.text 
         assert headline_text == popup_headline
+     
         sleep(1)
         
     def verify_id_label_text(self, id_label_text):
@@ -74,9 +77,6 @@ class CreateButton(BasePage):
         
     def id_textfield_input(self):
         textfield = self.libs.get_element_by_xpath(self.driver,self.id_input_xpath)
-        rows = self.libs.get_elements_by_xpath(self.driver, self.table_rows_xpath)
-        self.number_of_rows = len(rows)
-        
         textfield.send_keys(self.number_of_rows)
         sleep(1)
     
@@ -102,6 +102,7 @@ class CreateButton(BasePage):
     def validate_new_rows_number(self):
         sleep(10)
         rows = self.libs.get_elements_by_xpath(self.driver, self.table_rows_xpath)
+        print(len(rows), self.number_of_rows)
         assert len(rows) == (self.number_of_rows+1)
         sleep(1)
     
