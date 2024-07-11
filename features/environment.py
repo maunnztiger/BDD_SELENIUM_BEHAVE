@@ -21,8 +21,6 @@ data = json.load(open("Ressources/config.json"))
 def before_scenario(context, scenario):
     opts = FirefoxOptions()
     opts.add_argument("--headless")
-    opts.add_argument('--no-sandbox')
-    opts.add_argument('--disable-dev-shm-usage')
     context.driver = webdriver.Firefox(options=opts)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
