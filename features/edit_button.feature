@@ -1,7 +1,7 @@
 Feature: Testing the edit-button functionality
 
 Scenario: write a little test for the edit button
-    GIVEN the user opens up the page "Men in Homeoffice Statistic"
+    GIVEN the user opens up the page "Men in Homeoffice Data"
     WHEN the user clicks on the edit-button at the right end of a row of the table
     THEN a popup opens up with the headline "Edit Row"
     AND the popup has a first label "Aspekt:"
