@@ -23,9 +23,7 @@ def before_scenario(context, scenario):
     opts.add_argument("--headless")
     opts.add_argument('--no-sandbox')
     opts.add_argument('--disable-dev-shm-usage')
-    geckodriver_path = "/usr/local/bin/geckodriver"
-    driver_service = Service(executable_path=geckodriver_path)
-    context.driver = webdriver.Firefox(options=opts, service=driver_service)
+    context.driver = webdriver.Firefox(options=opts)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
     context.basic_menu = BasicMenuPage(basepage)
