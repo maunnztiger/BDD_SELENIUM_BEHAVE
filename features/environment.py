@@ -2,6 +2,7 @@ import json
 import os
 from selenium import webdriver
 from selenium.webdriver import FirefoxOptions
+from selenium.webdriver.firefox.service import Service
 from features.Pages.base_page import BasePage
 from features.Pages.basic_menu_page import BasicMenuPage
 from features.Pages.table_content_page import TableContentPage
@@ -22,7 +23,9 @@ def before_scenario(context, scenario):
     opts.add_argument("--headless")
     opts.add_argument('--no-sandbox')
     opts.add_argument('--disable-dev-shm-usage')
-    context.driver = webdriver.Firefox(options=opts)
+    geckodriver_path = "/usr/local/bin/geckodriver"
+    driver_service = Service(executable_path=geckodriver_path)
+    context.driver = webdriver.Firefox(options=opts, service=driver_service)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
     context.basic_menu = BasicMenuPage(basepage)
