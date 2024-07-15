@@ -96,11 +96,10 @@ class CreateButton(BasePage):
         sleep(1)
 
     def popup_is_not_displayed(self):
-        WebDriverWait(self.driver, 2).until(EC.invisibility_of_element_located((By.XPATH, self.popup_overlay_xpath)))
-        sleep(1)
+        WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located((By.XPATH, self.popup_overlay_xpath)))
+        sleep(10)
         
     def validate_new_rows_number(self):
-        sleep(10)
         rows = self.libs.get_elements_by_xpath(self.driver, self.table_rows_xpath)
         print(len(rows), self.number_of_rows)
         assert len(rows) == (self.number_of_rows+1)
