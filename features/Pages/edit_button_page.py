@@ -86,7 +86,7 @@ class EditButton(BasePage):
         try:
             assert save_button_text == button_name
             save_button.click()
-            sleep(1)
+            sleep(5)
         except: Exception   
     
     def verify_columns_new_textentries(self):
