@@ -86,10 +86,11 @@ class EditButton(BasePage):
         try:
             assert save_button_text == button_name
             save_button.click()
-            sleep(5)
+            sleep(1)
         except: Exception   
     
     def verify_columns_new_textentries(self):
+        self.driver.implicitly_wait(20)
         aspekt_column = self.libs.get_element_by_xpath(self.driver, self.aspekt_column_xpath)
         value_column = self.libs.get_element_by_xpath(self.driver, self.value_column_xpath)
         aspekt_column_text = aspekt_column.text
