@@ -102,7 +102,6 @@ class CreateButton(BasePage):
     def validate_new_rows_number(self):
         self.driver.implicitly_wait(20)
         rows = self.libs.get_elements_by_xpath(self.driver, self.table_rows_xpath)
-        print(len(rows), self.number_of_rows)
         assert len(rows) == (self.number_of_rows+1)
         sleep(1)
     
