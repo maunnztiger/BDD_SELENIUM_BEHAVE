@@ -1,5 +1,8 @@
 from features.Pages.base_page import BasePage
 from features.Pages.library_page import Library
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 class EditButton(BasePage):
@@ -90,7 +93,7 @@ class EditButton(BasePage):
         except: Exception   
     
     def verify_columns_new_textentries(self):
-        self.driver.implicitly_wait(25)
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, self.aspekt_column_xpath)))
         aspekt_column = self.libs.get_element_by_xpath(self.driver, self.aspekt_column_xpath)
         value_column = self.libs.get_element_by_xpath(self.driver, self.value_column_xpath)
         aspekt_column_text = aspekt_column.text
