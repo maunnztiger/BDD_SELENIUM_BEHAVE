@@ -21,6 +21,9 @@ data = json.load(open("Ressources/config.json"))
 def before_scenario(context, scenario):
     opts = FirefoxOptions()
     opts.add_argument("--headless")
+    opts.add_argument("--disable-gpu")
+    opts.add_argument(
+    "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
     context.driver = webdriver.Firefox(options=opts)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
