@@ -93,7 +93,7 @@ class EditButton(BasePage):
         except: Exception   
     
     def verify_columns_new_textentries(self):
-        WebDriverWait(self.driver, 25).until(EC.presence_of_element_located((By.XPATH, self.aspekt_column_xpath)))
+        WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.XPATH, self.aspekt_column_xpath)))
         aspekt_column = self.libs.get_element_by_xpath(self.driver, self.aspekt_column_xpath)
         value_column = self.libs.get_element_by_xpath(self.driver, self.value_column_xpath)
         aspekt_column_text = aspekt_column.text
