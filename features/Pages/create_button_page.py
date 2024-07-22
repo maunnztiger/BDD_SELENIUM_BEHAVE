@@ -12,6 +12,7 @@ class CreateButton(BasePage):
         BasePage.__init__(self, context.driver)
         self.libs = Library()
         self.table_last_row_xpath = "/html/body/div[4]/table/tbody/tr[5]"
+        self.table_rows_xpath = "/html/body/div[4]/table/tbody/tr"
         self.table_last_row_first_column_xpath = "/html/body/div[4]/table/tbody/tr[last()]/td[1]"
         self.table_last_row_second_column_xpath = "/html/body/div[4]/table/tbody/tr[last()]/td[2]"
         self.table_last_row_third_column_xpath = "/html/body/div[4]/table/tbody/tr[last()]/td[3]"
