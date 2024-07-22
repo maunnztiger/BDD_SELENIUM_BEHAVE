@@ -2,7 +2,6 @@ import json
 import os
 from selenium import webdriver
 from selenium.webdriver import FirefoxOptions
-from selenium.webdriver.firefox.service import Service
 from features.Pages.base_page import BasePage
 from features.Pages.basic_menu_page import BasicMenuPage
 from features.Pages.table_content_page import TableContentPage
@@ -21,10 +20,9 @@ data = json.load(open("Ressources/config.json"))
 def before_scenario(context, scenario):
     opts = FirefoxOptions()
     opts.add_argument("--headless")
-    opts.add_argument("--disable-gpu")
-    opts.add_argument(
-    "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
-    context.driver = webdriver.Firefox(options=opts)
+    profile = webdriver.FirefoxProfile()
+    profile.set_preference("general.useragent.override", "whatever you want")
+    context.driver = webdriver.Firefox(profile, options=opts)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
     context.basic_menu = BasicMenuPage(basepage)
