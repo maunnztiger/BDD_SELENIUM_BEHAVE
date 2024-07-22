@@ -22,12 +22,11 @@ def before_scenario(context, scenario):
     useragent = UserAgent()
     options = FirefoxOptions()
     options.add_argument("--headless")
-    options.add_argument('--start-maximized')
     options.add_argument("--disable-gpu")
-    profile = webdriver.FirefoxProfile()
-    profile.set_preference("general.useragent.override", useragent.random)
-  
-    context.driver = webdriver.Firefox(firefox_profile = profile, options = options)
+    options.add_argument(
+    "userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0"
+                         )
+    context.driver = webdriver.Firefox(options = options)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
     context.basic_menu = BasicMenuPage(basepage)
