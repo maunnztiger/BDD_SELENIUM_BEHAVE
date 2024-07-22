@@ -10,6 +10,7 @@ from features.Pages.create_button_page import CreateButton
 from features.Pages.edit_button_page import EditButton
 from features.Pages.video_element_page import VideoElement
 from features.Pages.slide_show_page import SlideShowPage
+from fake_useragent import UserAgent
 
 
 
@@ -18,11 +19,12 @@ data = json.load(open("Ressources/config.json"))
 # This environment page is used as hooks page. Here we can notice that we have used before, after hooks along side with some step hooks.
 
 def before_scenario(context, scenario):
+    useragent = UserAgent()
     opts = FirefoxOptions()
     opts.add_argument("--headless")
     profile = webdriver.FirefoxProfile()
-    profile.set_preference("general.useragent.override", "whatever you want")
-    context.driver = webdriver.Firefox(profile, options=opts)
+    profile.set_preference("general.useragent.override", useragent.random)
+    context.driver = webdriver.Firefox(firefox_profile = profile, options = opts)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
     context.basic_menu = BasicMenuPage(basepage)
