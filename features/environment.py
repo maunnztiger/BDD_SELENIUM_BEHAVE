@@ -26,7 +26,7 @@ def before_scenario(context, scenario):
     options.add_argument("--disable-gpu")
     profile = webdriver.FirefoxProfile()
     profile.set_preference("general.useragent.override", useragent.random)
-    print("userAgent: "+ context.driver.execute_script("return navigator.userAgent;"))
+  
     context.driver = webdriver.Firefox(firefox_profile = profile, options = options)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
@@ -41,6 +41,7 @@ def before_scenario(context, scenario):
     context.driver.get(data["DEXTERSLAB_URL"])
     context.driver.maximize_window()
     context.driver.implicitly_wait(3)
+    print("userAgent: "+ context.driver.execute_script("return navigator.userAgent;"))
     
 
   
