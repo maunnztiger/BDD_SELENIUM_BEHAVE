@@ -24,7 +24,7 @@ def before_scenario(context, scenario):
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument(
-    "userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0"
+    "userAgent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
                          )
     context.driver = webdriver.Firefox(options = options)
     context.driver.implicitly_wait(60)
