@@ -11,7 +11,7 @@ class CreateButton(BasePage):
     def __init__(self, context):
         BasePage.__init__(self, context.driver)
         self.libs = Library()
-        self.table_body_xpath = "/html/body/div[4]/table/tbody"
+        self.table_last_row_xpath = "/html/body/div[4]/table/tbody/tr[5]"
         self.table_last_row_first_column_xpath = "/html/body/div[4]/table/tbody/tr[last()]/td[1]"
         self.table_last_row_second_column_xpath = "/html/body/div[4]/table/tbody/tr[last()]/td[2]"
         self.table_last_row_third_column_xpath = "/html/body/div[4]/table/tbody/tr[last()]/td[3]"
@@ -100,7 +100,7 @@ class CreateButton(BasePage):
         
         
     def validate_new_rows_number(self):
-        WebDriverWait(self.driver, 50).until(EC.presence_of_all_elements_located((By.XPATH, self.table_body_xpath)))
+        WebDriverWait(self.driver, 50).until(EC.presence_of_element_located((By.XPATH, self.table_last_row_xpath)))
         rows = self.libs.get_elements_by_xpath(self.driver, self.table_rows_xpath)
         assert len(rows) == (self.number_of_rows+1)
         sleep(1)
