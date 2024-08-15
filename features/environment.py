@@ -19,14 +19,18 @@ data = json.load(open("Ressources/config.json"))
 # This environment page is used as hooks page. Here we can notice that we have used before, after hooks along side with some step hooks.
 
 def before_scenario(context, scenario):
-    useragent = UserAgent()
     options = FirefoxOptions()
     options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-    options.add_argument(
-    "userAgent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
-                         )
-    context.driver = webdriver.Firefox(options = options)
+    if os.name == "nt":
+        options.add_argument(
+        "userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0"    
+        )
+    else:
+        options.add_argument(
+        "userAgent: Mozilla/5.0 (X11; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0"
+        )            
+        
+    context.driver = webdriver.Firefox(options=options)
     context.driver.implicitly_wait(60)
     basepage = BasePage(context.driver)
     context.basic_menu = BasicMenuPage(basepage)
