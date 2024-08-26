@@ -2,6 +2,10 @@
 from time import sleep
 from features.Pages.base_page import BasePage
 from features.Pages.library_page import Library
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
 
 
 # The page contains all the locators and the actions to perform on that web element.
@@ -24,6 +28,7 @@ class BasicMenuPage(BasePage):
         self.fifth_menupoint_element_id = "data_disadvantages"
         self.sixth_menupoint_element_id = "data_european_comparation"
         self.seventh_menupoint_element_id = "video_list"
+        self.eigth_menupoint_element_id = "text_resources"
         
     def tab_validation(self, tab_title):
         title = self.driver.title
@@ -87,13 +92,14 @@ class BasicMenuPage(BasePage):
         assert menu_button_text == menupoint
         sleep(1)
         
+    def eigth_menupoint_validation(self, menupoint):
+        element = self.libs.get_element_by_id(self.driver, self.eigth_menupoint_element_id)
+        menu_button_text = element.text
+        assert menu_button_text == menupoint
+        sleep(1)
+        
     def menu_disappears_validation(self):
         try:
-            menu = self.libs.get_elements_by_id(self.driver, self.menu_element_id)
-            assert len(menu) > 0, "Menu Element has disappeared"
-            self.driver.close()
+            WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located((By.ID, self.menu_element_id)))
         except:
-            self.driver.close()
-            assert False, "Menu Element is still visilble"    
-            
-                             
+            TimeoutException, "Element is still visible"

@@ -11,6 +11,7 @@ Scenario: run a simple test
    AND the fifth menu-point is: "Homeoffice: Disadvantages"
    AND the sixth menu-point is: "Homeoffice in Europe"
    AND the seventh menu-point is: "Homeoffice: Video Statements"
+   AND the eigth menu point is: "Text-Resourcen"
    WHEN the user clicks the button in the left corner
    THEN the menu dissapears again
    

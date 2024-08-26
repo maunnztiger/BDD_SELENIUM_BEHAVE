@@ -41,6 +41,10 @@ def step_impl(context, menupoint):
 def step_impl(context, menupoint): 
     context.basic_menu.seventh_menupoint_validation(menupoint)    
         
+@step('the eigth menu point is: "{menupoint}"')
+def step_impl(context, menupoint):
+    context.basic_menu.eigth_menupoint_validation(menupoint)
+
 @when('the user clicks on the menu button again')
 def step_impl(context):
     context.basic_menu.click_menu_button()
