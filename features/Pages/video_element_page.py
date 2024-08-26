@@ -13,11 +13,14 @@ class VideoElement(BasePage):
         self.libs = Library()
         self.driver = context.driver
         self.menu_button_xpath = "//*[@id='menuButton']"
-        self.video_list_button_xpath = "//*[@id='video_list']"
+        self.video_list_button_xpath ="//*[@id='video_list']"
         self.main_menu_button_xpath = "//*[@id='main_menu']"
         self.frontpage_headline_xpath = "/html/body/div[2]/h2"
         self.video_list_page_headline_xpath ="/html/body/div[1]/h1"
+        self.video_link_container_xpath = "//*[@id='link_container']"  
+        
         self.link_container_video_link_elements_xpath = "/html/body/div[3]/div"
+        self.headline_xpath ="/html/body/div[2]/h2"
         self.video_link_xpath ="//*[@id='0']"
         self.number_of_links = 7
         self.video_source_xpath = "//iframe[@src='https://www.youtube.com/embed/aMxFcrCg4To?si=AlyAcUfmWaw01ltO']"
@@ -54,14 +57,24 @@ class VideoElement(BasePage):
         element.click()
         sleep(1)
     
+    def verify_menu_list_disappears(self):
+        try:
+            WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located((By.XPATH, self.video_link_container_xpath )))
+        except: TimeoutException, 'Element is still visible'
+    
     def validate_video_iframe_open_up(self):
         try:
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, self.video_source_xpath )))
         except: TimeoutException, 'Element is not loaded after 5 Seconds'       # type: ignore
     
-    
+    def validate_video_list_button_text(self,video_list_button_text):
+        video_list_button = self.libs.get_element_by_xpath(self.driver, self.video_list_button_xpath)
+        element_text = video_list_button.text
+        assert element_text == video_list_button_text
+        sleep(1)   
+   
     def click_red_play_button(self):
-        frame1 = self.libs.get_element_by_xpath(self.driver, '/html/body/div[2]/iframe')
+        frame1 = self.libs.get_element_by_xpath(self.driver, '//*[@id="video_source"]')
         self.driver.switch_to.frame(frame1)
         sleep(2)
         Ytbutton = self.libs.get_element_by_xpath(self.driver, self.Yt_button_xpath)
@@ -91,11 +104,12 @@ class VideoElement(BasePage):
         sleep(5)
         video_current_time_2 = element.text
         assert video_current_time_1 == video_current_time_2 
+        sleep(1)
     
     def click_video_list_button(self, link_text):
         self.driver.switch_to.default_content()
-        button = self.libs.get_element_by_linktext(self.driver, link_text)
-        button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.LINK_TEXT, link_text)))
+        button = self.libs.get_element_by_xpath(self.driver, self.video_list_button_xpath)
+        button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.XPATH, self.video_list_button_xpath)))
         self.driver.execute_script("arguments[0].click();", button)
         sleep(1)
     
@@ -106,11 +120,17 @@ class VideoElement(BasePage):
         self.driver.execute_script("arguments[0].click();", button)
         sleep(1)
         
-    def validate_frontpage_headline(self, front_page_headline):
-        element = self.libs.get_element_by_xpath(self.driver, self.frontpage_headline_xpath)    
-        element_text= element.text
-        assert element_text == front_page_headline
-    
-    
+    def verify_iframe_dispappears(self):
+        try:
+            WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located((By.XPATH, self.video_source_xpath )))
+        except: TimeoutException, 'Element is still visible'    
         
-                  
+    def verify_video_list_appears(self):
+        try:
+            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, self.video_link_container_xpath )))
+        except: TimeoutException, 'Element is not loaded after 5 Seconds'
+
+    def validate_frontpage_headline(self, front_page_headline):
+        element = self.libs.get_element_by_xpath(self.driver, self.headline_xpath)
+        element_text = element.text
+        assert element_text == front_page_headline

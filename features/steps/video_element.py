@@ -20,13 +20,21 @@ def step_impl(context, number_of_links):
 def step_impl(context, tab_title):
     context.video_element.verfiy_tab_title(tab_title)
 
-@when('the user clicks on one of the video-links')
+@when('the user clicks on one of the video-thumbnails')
 def step_impl(context):
     context.video_element.click_video_link()
 
-@then('a new page with the according embedded Video opens up')
+@then('the video-menu-list disappears')
 def step_impl(context):
+    context.video_element.verify_menu_list_disappears()
+    
+@step('a new frame with the according video opens up on the page')
+def step_impl(context):    
     context.video_element.validate_video_iframe_open_up()
+
+@step('the blue menu button on the left top corner contains the textcontent "{video_list_button_text}"')
+def step_impl(context, video_list_button_text):
+    context.video_element.validate_video_list_button_text(video_list_button_text)
     
 @when('the user clicks on the red play-button on the video')
 def step_impl(context):
@@ -48,9 +56,18 @@ def step_impl(context):
 def step_impl(context, link_text):
     context.video_element.click_video_list_button(link_text)    
 
-@then('the page with the headline "{video_page_headline}" opens up again')
-def step_impl(context, video_page_headline):
-    context.video_element.verify_video_list(video_page_headline)
+@then('the iframe with the acoording video disappears')
+def step_impl(context):
+    context.video_element.verify_iframe_dispappears()
+
+@step('the video-menu-list appears again')
+def step_impl(context):
+    context.video_element.verify_video_list_appears()    
+
+@step('the video-menu-list contains again all "{number_of_links}" video thumbnails')    
+def step_impl(context, number_of_links):
+    context.video_element.verify_number_of_links(number_of_links)    
+
 
 @when('the user activates the button "Main Menu ☰" on the left top of the page')
 def step_impl(context):
