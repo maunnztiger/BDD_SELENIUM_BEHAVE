@@ -9,7 +9,9 @@ from features.Pages.return_button_page import ReturnButton
 from features.Pages.create_button_page import CreateButton
 from features.Pages.edit_button_page import EditButton
 from features.Pages.video_element_page import VideoElement
+from features.Pages.text_resources_page import TextResources
 from fake_useragent import UserAgent
+from behave.model_core import Status
 
 
 
@@ -38,12 +40,14 @@ def before_scenario(context, scenario):
     context.create_button = CreateButton(basepage)
     context.edit_button = EditButton(basepage)
     context.video_element = VideoElement(basepage)
+    context.text_resources = TextResources(basepage)
     context.stepid = 1
     context.driver.get(data["DEXTERSLAB_URL"])
     context.driver.maximize_window()
     context.driver.implicitly_wait(3)
-    print("userAgent: "+ context.driver.execute_script("return navigator.userAgent;"))
+    
     
 def after_scenario(context, scenario):
+    print("Scenario: " + scenario + "Status" + scenario.status)
     context.driver.quit()    
     
