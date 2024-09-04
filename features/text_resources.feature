@@ -1,6 +1,6 @@
 Feature: Testing the text-resources feature
 
-Scenario: write a little test for the the return-button functionality
+Scenario: write a little test for the the text-resources functionality
     GIVEN the title of the tab is still "Homeoffice 2024" 
     WHEN the user clicks the menuButton on the front page
     AND the user clicks on the point "Text-Resourcen"
