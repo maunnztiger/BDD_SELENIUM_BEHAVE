@@ -52,9 +52,9 @@ def step_impl(context, keyboard_key):
 def step_impl(context):
     context.video_element.validate_video_is_paused()   
     
-@when('the user clicks on the button "{link_text}" on the left top of the page')
-def step_impl(context, link_text):
-    context.video_element.click_video_list_button(link_text)    
+@when('the user clicks on the button "Video Menu ☰" on the left top of the page')
+def step_impl(context):
+    context.video_element.click_video_list_button()    
 
 @then('the iframe with the acoording video disappears')
 def step_impl(context):

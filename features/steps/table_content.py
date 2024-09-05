@@ -57,7 +57,7 @@ def step_impl(context, second_column_title):
 def step_impl(context, third_column_title):
     context.table_content.verify_third_column_title(third_column_title)      
     
-@step('the fourth column contains an edit button and a delete-button')
+@step('the fourth column contains an edit-button and a delete-button')
 def step_impl(context):
     context.table_content.validate_edit_and_delete_button()        
 

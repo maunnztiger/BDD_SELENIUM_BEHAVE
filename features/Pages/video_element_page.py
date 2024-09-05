@@ -27,19 +27,19 @@ class VideoElement(BasePage):
         self.Yt_button_xpath = "/html/body/div[1]/div/div[4]/button"
 
     def open_user_menu(self):
-        element = self.libs.get_element_by_xpath(self.driver, self.menu_button_xpath)
-        element.click()
+        menu_button = self.libs.get_element_by_xpath(self.driver, self.menu_button_xpath)
+        menu_button.click()
         sleep(1)
     
     def click_menu_linktext(self, menu_link_text):
-        element = self.libs.get_element_by_linktext(self.driver, menu_link_text)
-        element.click() 
+        menu_link = self.libs.get_element_by_linktext(self.driver, menu_link_text)
+        menu_link.click() 
         sleep(5)
         
-    def verify_video_list(self, video_page_headline):
-        element = self.libs.get_element_by_xpath(self.driver, self.video_list_page_headline_xpath)
-        element_text_content = element.text 
-        assert element_text_content == video_page_headline
+    def verify_video_list(self, video_page_headline_text):
+        video_list_headline = self.libs.get_element_by_xpath(self.driver, self.video_list_page_headline_xpath)
+        video_list_headline_text = video_list_headline.text 
+        assert video_list_headline_text == video_page_headline_text
         sleep(1)
         
     def verfiy_tab_title(self, tab_title):
@@ -48,13 +48,13 @@ class VideoElement(BasePage):
         sleep(2) 
     
     def verify_number_of_links(self, number_of_links):
-        elements = self.libs.get_elements_by_xpath(self.driver, self.link_container_video_link_elements_xpath)
-        assert str(len(elements)) == str(number_of_links) 
+        link_container_video_link_elements = self.libs.get_elements_by_xpath(self.driver, self.link_container_video_link_elements_xpath)
+        assert str(len(link_container_video_link_elements)) == str(number_of_links) 
         sleep(1)
         
     def click_video_link(self):
-        element = self.libs.get_element_by_xpath(self.driver, self.video_link_xpath)
-        element.click()
+        video_link = self.libs.get_element_by_xpath(self.driver, self.video_link_xpath)
+        video_link.click()
         sleep(1)
     
     def verify_menu_list_disappears(self):
@@ -84,10 +84,10 @@ class VideoElement(BasePage):
         
     
     def vaildate_video_play(self):
-        element = self.libs.get_element_by_xpath(self.driver, "//span[@class='ytp-time-current']")
-        hover = ActionChains(self.driver).move_to_element(element)
+        time_current = self.libs.get_element_by_xpath(self.driver, "//span[@class='ytp-time-current']")
+        hover = ActionChains(self.driver).move_to_element(time_current)
         hover.perform()
-        video_current_time = element.text
+        video_current_time = time_current.text
         assert video_current_time != '0:00'
         sleep(1)
         
@@ -97,16 +97,16 @@ class VideoElement(BasePage):
         sleep(1)
     
     def validate_video_is_paused(self):
-        element = self.libs.get_element_by_xpath(self.driver, "//span[@class='ytp-time-current']")
-        hover = ActionChains(self.driver).move_to_element(element)
+        time_current = self.libs.get_element_by_xpath(self.driver, "//span[@class='ytp-time-current']")
+        hover = ActionChains(self.driver).move_to_element(time_current)
         hover.perform()
-        video_current_time_1 = element.text
+        video_current_time_1 = time_current.text
         sleep(5)
-        video_current_time_2 = element.text
+        video_current_time_2 = time_current.text
         assert video_current_time_1 == video_current_time_2 
         sleep(1)
     
-    def click_video_list_button(self, link_text):
+    def click_video_list_button(self):
         self.driver.switch_to.default_content()
         button = self.libs.get_element_by_xpath(self.driver, self.video_list_button_xpath)
         button = WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable((By.XPATH, self.video_list_button_xpath)))
@@ -131,6 +131,6 @@ class VideoElement(BasePage):
         except: TimeoutException, 'Element is not loaded after 5 Seconds'
 
     def validate_frontpage_headline(self, front_page_headline):
-        element = self.libs.get_element_by_xpath(self.driver, self.headline_xpath)
-        element_text = element.text
+        headline = self.libs.get_element_by_xpath(self.driver, self.headline_xpath)
+        element_text = headline.text
         assert element_text == front_page_headline

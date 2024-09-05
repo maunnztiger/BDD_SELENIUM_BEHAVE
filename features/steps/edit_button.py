@@ -38,9 +38,9 @@ def step_impl(context):
 def step_impl(context):
     context.edit_button.change_textfield_entries()
 
-@step('clicks on the button "{button_name}"')
-def step_impl(context, button_name):
-    context.edit_button.save_changes(button_name)
+@step('clicks on the button "Save Changes"')
+def step_impl(context):
+    context.edit_button.save_changes()
     
 @then('the according row has new textentries in the according columns')
 def step_impl(context):

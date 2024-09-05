@@ -9,7 +9,6 @@ class EditButton(BasePage):
     def __init__(self, context):
         BasePage.__init__(self, context.driver)
         self.libs = Library()
-        self.context = context
         self.aspekt_column_xpath          = "/html/body/div[4]/table/tbody/tr[4]/td[2]"
         self.value_column_xpath           = "/html/body/div[4]/table/tbody/tr[4]/td[3]"
         self.edit_button_xpath            = "/html/body/div[4]/table/tbody/tr[4]/td[4]/i"
@@ -23,44 +22,44 @@ class EditButton(BasePage):
         self.apsekt_textfield_new_text    = "Männer, die prinzipiell kein Homeoffice machen wollen"
         self.value_textfield_new_text     = "2%"
     
+    def get_textcontent(self):
+        aspekt_column = self.libs.get_element_by_xpath(self.driver, self.aspekt_column_xpath)
+        value_column = self.libs.get_element_by_xpath(self.driver, self.value_column_xpath)
+        self.aspekt_column_textentry = aspekt_column.text
+        self.value_column_textentry = value_column.text
+    
     def click_on_edit_button(self):
-        # get the textcontent of the row before click the button in this row
-        element_1 = self.libs.get_element_by_xpath(self.driver, self.aspekt_column_xpath)
-        element_2 = self.libs.get_element_by_xpath(self.driver, self.value_column_xpath)
-        self.aspekt_column_textentry = element_1.text
-        self.value_column_textentry = element_2.text
-        sleep(1)
         self.edit_button = self.libs.get_element_by_xpath(self.driver, self.edit_button_xpath)
         self.edit_button.click()
         sleep(1)
         
-    def validate_popup_headline(self, popup_headline):
-        element = self.libs.get_element_by_xpath(self.driver, self.popup_headline_xpath)         
-        popup_headline_text = element.text
-        assert popup_headline_text == popup_headline
+    def validate_popup_headline(self, headline_text):
+        popup_headline = self.libs.get_element_by_xpath(self.driver, self.popup_headline_xpath)         
+        popup_headline_text = popup_headline.text
+        assert popup_headline_text == headline_text
         sleep(1)
         
     def verify_aspekt_label_name(self, label_name):
-        element = self.libs.get_element_by_xpath(self.driver, self.popup_aspekt_label_xpath)   
-        label_text = element.text
+        popup_aspekt_label = self.libs.get_element_by_xpath(self.driver, self.popup_aspekt_label_xpath)   
+        label_text = popup_aspekt_label.text
         assert label_text == label_name
         sleep(1)
         
     def verify_value_label_name(self, label_name):     
-        element = self.libs.get_element_by_xpath(self.driver, self.popup_value_label_xpath)
-        label_text = element.text
+        popup_value_label = self.libs.get_element_by_xpath(self.driver, self.popup_value_label_xpath)
+        label_text = popup_value_label.text
         assert label_text == label_name
         sleep(1)
     
     def validate_first_button(self, first_button_name):
-        element = self.libs.get_element_by_xpath(self.driver, self.popup_save_button_xpath)
-        button_textcontent = element.text
+        popup_save_button = self.libs.get_element_by_xpath(self.driver, self.popup_save_button_xpath)
+        button_textcontent = popup_save_button.text
         assert button_textcontent == first_button_name
         sleep(1)
     
     def validate_second_button(self, second_button_name):
-        element = self.libs.get_element_by_xpath(self.driver, self.popup_cancel_button_xpath)        
-        button_textcontent = element.text
+        popup_cancel_button = self.libs.get_element_by_xpath(self.driver, self.popup_cancel_button_xpath)        
+        button_textcontent = popup_cancel_button.text
         assert button_textcontent == second_button_name
         sleep(1)
         
@@ -83,15 +82,11 @@ class EditButton(BasePage):
         self.value_textfield.send_keys(self.value_textfield_new_text)    
         sleep(1)
         
-    def save_changes(self, button_name):
+    def save_changes(self):
         save_button = self.libs.get_element_by_xpath(self.driver, self.popup_save_button_xpath)
-        save_button_text = save_button.text    
-        try:
-            assert save_button_text == button_name
-            save_button.click()
-            sleep(1)
-        except: Exception   
-    
+        save_button.click()
+        sleep(1)
+            
     def verify_columns_new_textentries(self):
         WebDriverWait(self.driver, 50).until(EC.presence_of_element_located((By.XPATH, self.aspekt_column_xpath)))
         aspekt_column = self.libs.get_element_by_xpath(self.driver, self.aspekt_column_xpath)

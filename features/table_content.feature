@@ -15,6 +15,6 @@ Scenario: write a simple test for the table-content of Men in Homeoffice-Statist
     AND the first column has the title "Id"
     AND the second column has the title "Aspekt"
     AND the third column has the title "Value"
-    AND the fourth column contains an edit button and a delete-button
+    AND the fourth column contains an edit-button and a delete-button
     AND the the rows have certain text-entries
     

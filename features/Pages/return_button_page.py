@@ -19,8 +19,8 @@ class ReturnButton(BasePage):
         sleep(1)
     
     def validate_headline_text(self, headline_text):
-        element = self.libs.get_element_by_id(self.driver, self.headline_id)
-        text = element.text
+        headline_id = self.libs.get_element_by_id(self.driver, self.headline_id)
+        text = headline_id.text
         assert text == headline_text
         sleep(1)
     
@@ -30,13 +30,13 @@ class ReturnButton(BasePage):
         sleep(1)
     
     def return_button_click(self):
-        element = self.libs.get_element_by_xpath(self.driver, self.return_button_xpath)
-        element.click()
+        return_button = self.libs.get_element_by_xpath(self.driver, self.return_button_xpath)
+        return_button.click()
         sleep(1)
         
     def validate_front_page(self, headline_text):    
-        element = self.libs.get_element_by_xpath(self.driver, self.front_page_headline_xpath)    
-        front_page_headline_text = element.text
+        front_page_headline = self.libs.get_element_by_xpath(self.driver, self.front_page_headline_xpath)    
+        front_page_headline_text = front_page_headline.text
         assert front_page_headline_text == headline_text
         sleep(1)
     
