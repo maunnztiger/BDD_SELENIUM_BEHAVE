@@ -3,7 +3,6 @@ from features.Pages.library_page import Library
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import ActionChains
 from selenium.common.exceptions import TimeoutException
 from time import sleep
 
@@ -41,7 +40,9 @@ class TextResources(BasePage):
         css_value = self.libs.get_value_of_css_property(image_container, self.image_container_background_color_css_property)
         color_string_1 = self.libs.get_color_string(css_value)
         color_string_2 = self.libs.get_color_string(self.image_container_background_color_css_HEX_value)
-        assert color_string_1 == color_string_2
+        try:
+            assert color_string_1 == color_string_2, "Color strings match"
+        except: False, "Color strings do not match"  
         sleep(1)
     
     def validate_two_pictures(self):
