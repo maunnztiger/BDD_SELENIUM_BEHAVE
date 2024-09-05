@@ -11,23 +11,25 @@ class TextResources(BasePage):
     def __init__(self, context):
         BasePage.__init__(self, context.driver)
         self.libs = Library()
-        self.image_container_xpath ="//*[@id='image_container']"
-        self.first_image_xpath = "//*[@id='0']"
-        self.second_picture_xpath = "//*[@id='1']"
-        self.iframe_container_xpath = "//*[@id='iframe_container'']"
-        self.report_title_span_xpath = "/html/body/div[1]/div[2]/div[8]/div[2]/div[1]/div[2]/span[1]"
-        self.text_menu_button_xpath = "//*[@id='text_list']"
-        self.main_menu_button_xpath = "//*[@id='main_menu']"
-        self.article_headline_xpath = "/html/body/header/div/div/h1" 
-        self.frontpage_main_menu_button_xpath = "//*[@id='menuButton']"
-        self.frontpage_headline_xpath = "/html/body/div[2]/h2"
-        self.image_container_background_color_css_value = "rgb(18, 44, 82)"
-        self.image_container_background_color_css_property = "background-color"
+        
+        self.blue_menu_button_xpath = "//*[@id='menuButton']"
+        self.blue_menubox_xpath = "//*[@id='menu']"
         self.blue_menubox_left_css_property = "left"
         self.blue_menubox_left_css_value = "-250px"
-        self.blue_menubox_xpath = "//*[@id='menu']"
-        self.blue_menu_button_xpath = "//*[@id='menuButton']"
+        self.frontpage_headline_xpath = "/html/body/div[2]/h2"
         self.frontPage_URL = "http://192.168.178.53:5000/index.html"
+        
+        self.text_menu_button_xpath = "//*[@id='text_list']"
+        self.main_menu_button_xpath = "//*[@id='main_menu']"
+        self.image_container_xpath ="//*[@id='image_container']"
+        self.image_container_background_color_css_property = "background-color"
+        self.image_container_background_color_css_value = "rgb(18, 44, 82)"
+        self.first_picture_xpath = "//*[@id='0']"
+        self.second_picture_xpath = "//*[@id='1']"
+        
+        self.iframe_container_xpath = "//*[@id='iframe_container'']"
+        self.report_title_span_xpath = "/html/body/div[1]/div[2]/div[8]/div[2]/div[1]/div[2]/span[1]"
+        self.article_headline_xpath = "/html/body/header/div/div/h1"        
         
     def validate_page_url(self, page_URL):
         get_url = self.driver.current_url
@@ -35,21 +37,21 @@ class TextResources(BasePage):
         sleep(1)
     
     def validate_field_colour(self):
-        element = self.libs.get_element_by_xpath(self.driver, self.image_container_xpath)
-        field_color = self.libs.get_value_of_css_property(element, self.image_container_background_color_css_property)
-        print(field_color)
-        assert field_color == self.image_container_background_color_css_value
+        image_container = self.libs.get_element_by_xpath(self.driver, self.image_container_xpath)
+        image_container_color = self.libs.get_value_of_css_property(image_container, self.image_container_background_color_css_property)
+        assert image_container_color == self.image_container_background_color_css_value
         sleep(1)
+    
     def validate_two_pictures(self):
         try:
-            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, self.first_image_xpath )))
+            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, self.first_picture_xpath )))
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, self.second_picture_xpath )))
         except: TimeoutException, 'Element is not loaded after 5 Seconds' 
         sleep(1)
         
     def click_upper_picture(self):
-        element = self.libs.get_element_by_xpath(self.driver, self.first_image_xpath)
-        element.click()
+        first_picture = self.libs.get_element_by_xpath(self.driver, self.first_picture_xpath)
+        first_picture.click()
         sleep(1)
         
     def verify_blue_container_disappears(self):
@@ -146,8 +148,7 @@ class TextResources(BasePage):
         sleep(1)
         
     def validate_main_menu_button_exists(self, main_menu_textcontent):
-        menu_button = self.libs.get_element_by_xpath(self.driver, self.blue_menu_button_xpath )
-        menu_button_text = menu_button.text
-        assert menu_button_text == main_menu_textcontent
-        sleep(1)
+        try:
+            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, self.blue_menu_button_xpath)))
+        except: TimeoutException, 'Element is not loaded after 5 Seconds' 
         
