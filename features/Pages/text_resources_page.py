@@ -23,7 +23,7 @@ class TextResources(BasePage):
         self.main_menu_button_xpath = "//*[@id='main_menu']"
         self.image_container_xpath ="//*[@id='image_container']"
         self.image_container_background_color_css_property = "background-color"
-        self.image_container_background_color_css_value = "rgb(18, 44, 82)"
+        self.image_container_background_color_css_HEX_value = "#122c52"
         self.first_picture_xpath = "//*[@id='0']"
         self.second_picture_xpath = "//*[@id='1']"
         
@@ -38,8 +38,10 @@ class TextResources(BasePage):
     
     def validate_field_colour(self):
         image_container = self.libs.get_element_by_xpath(self.driver, self.image_container_xpath)
-        image_container_color = self.libs.get_value_of_css_property(image_container, self.image_container_background_color_css_property)
-        assert image_container_color == self.image_container_background_color_css_value
+        css_value = self.libs.get_value_of_css_property(image_container, self.image_container_background_color_css_property)
+        color_string_1 = self.libs.get_color_string(css_value)
+        color_string_2 = self.libs.get_color_string(self.image_container_background_color_css_HEX_value)
+        assert color_string_1 == color_string_2
         sleep(1)
     
     def validate_two_pictures(self):
